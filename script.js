@@ -190,30 +190,30 @@ var makeGroupOrder = function() {
 };
 
 var renderNodes = function() {
-	var y = 25;
-	var x = 100;
-  $.each(nodes.items, function(index, value) {
-    console.log(value);
-		var div = $('<div/>');
-    var ready = 'not_ready';
-    $.each(value.status.conditions, function(index, condition) {
-      if (condition.type === 'Ready') {
-        ready = (condition.status === 'True' ? 'ready' : 'not_ready' )
-      }
-    });
-
- 		var eltDiv = $('<div class="window node ' + ready + '" title="' + value.metadata.name + '" id="node-' + value.metadata.name +
-                 '" style="left: ' + (x + 250) + '; top: ' + y + '"/>');
-	  eltDiv.html('<span><b>Node</b><br/><br/>' + 
-          truncate(value.metadata.name, 6) +
-          '</span>');
-    div.append(eltDiv);
-
-	  var elt = $('.nodesbar');
-		elt.append(div);
-
-    x += 120;
- });
+//	var y = 25;
+//	var x = 100;
+//  $.each(nodes.items, function(index, value) {
+//    console.log(value);
+//		var div = $('<div/>');
+//    var ready = 'not_ready';
+//    $.each(value.status.conditions, function(index, condition) {
+//      if (condition.type === 'Ready') {
+//        ready = (condition.status === 'True' ? 'ready' : 'not_ready' )
+//      }
+//    });
+//
+// 		var eltDiv = $('<div class="window node ' + ready + '" title="' + value.metadata.name + '" id="node-' + value.metadata.name +
+//                 '" style="left: ' + (x + 250) + '; top: ' + y + '"/>');
+//	  eltDiv.html('<span><b>Node</b><br/><br/>' + 
+//          truncate(value.metadata.name, 6) +
+//          '</span>');
+//    div.append(eltDiv);
+//
+//	  var elt = $('.nodesbar');
+//		elt.append(div);
+//
+//    x += 120;
+// });
 }
 
 var renderGroups = function() {
@@ -305,7 +305,7 @@ var loadData = function() {
     });
 	});
 
-	var req2 = $.getJSON("/api/v1/replicationcontrollers?labelSelector=visualize%3Dtrue", function( data ) {
+	var req2 = $.getJSON("/apis/extensions/v1beta1/deployments?labelSelector=visualize%3Dtrue", function( data ) {
 		controllers = data;
 		$.each(data.items, function(key, val) {
       val.type = 'replicationController';

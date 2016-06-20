@@ -63,7 +63,7 @@
     left: 0;
     right: 0;
     top: 50px;
-    height: 200px;
+    height: 0px;
     background-color: light-grey;
     border-bottom: thick solid black;
 }
@@ -74,4 +74,8 @@
 
 .terminating {
   background-color: red;
+}
+
+.demo {
+  top: 60px;
 }
